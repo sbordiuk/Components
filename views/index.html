@@ -11,7 +11,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="picopy.js"></script>
-  <script src="javascripts/fabric.js"></script>
   <style type="text/css">
       form img {
       height: 475px;
@@ -53,6 +52,7 @@
             <!-- Modal body -->
             <div class="modal-body">
               <form>
+                <input type="text" class="form-control" placeholder="Username">
                <div class="input-group mb-3">
                  <div class="input-group-prepend">
                    <span class="input-group-text">Username:</span>
@@ -107,7 +107,7 @@
     <div class="row">
     <div class="col">
     <div class="preview">
-      <img src="img/no_image.png">
+      <img src="../public/img/no_image.png" id="image_preview">
     </div>
   </div>
     <div class="col">
@@ -116,6 +116,12 @@
       <div class="form-check">
         <label class="form-check-label">
           <input type="checkbox" class="form-check-input" value="" onclick="grayfun()" id="gray">Grayscale</input>
+          <br>
+          <br>
+          <input type="checkbox" class="form-check-input" value="" onclick="invertfun()" id="invert">Invert</input>
+          <br>
+          <br>
+          <input type="checkbox" class="form-check-input" value="" onclick="saturatefun()" id="saturate">Saturate</input>          
         </label>
       </div>
     </div>
@@ -140,15 +146,15 @@
 </form>
 </div>
   <script>
-    const input = document.getElementById('image_uploads');
+    const input = document.querySelector('input');
     const preview = document.querySelector('.preview');
 
     input.style.opacity = 0;
 
     input.addEventListener('change', updateImageDisplay);
-    console.log("script");
+
     function updateImageDisplay() {
-      console.log("called update image display");
+
 
       while(preview.firstChild) {
         preview.removeChild(preview.firstChild);
@@ -193,11 +199,24 @@
 
     }
 
+    function invertfun(){
+      preview.style.filter="invert(100%)";
+      document.getElementById("invert").disabled = true;
+    }
+
+    function saturatefun(){
+      preview.style.filter="saturate(100%)";
+      document.getElementById("saturate").disabled = true;
+    }
 
     function revert() {
       preview.style.filter="none";
       document.getElementById("gray").disabled = false;
       document.getElementById("gray").checked = false;
+      document.getElementById("invert").disabled = false;
+      document.getElementById("invert").checked = false;
+      document.getElementById("saturate").disabled = false;
+      document.getElementById("saturate").checked = false;
 
 
     }
