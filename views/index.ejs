@@ -18,6 +18,16 @@
       order: 1;
       justify-content: center;
     }
+    html {
+    min-height: 100%; 
+}
+body {
+    background: -webkit-linear-gradient(#a3a3a3, #2e2e2e); 
+    background: -o-linear-gradient(#a3a3a3, #2e2e2e); 
+    background: -moz-linear-gradient(#a3a3a3, #2e2e2e); 
+    background: linear-gradient(#a3a3a3, #2e2e2e); 
+    background-color: #a3a3a3; 
+}
   </style>
 <script src="dist/popupS.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/popupS.min.css">
@@ -184,12 +194,10 @@
 </div>
 <br>
     <div class="row">
-      <div class="col">
-        <div class="card card-block d-flex">
-          <div class="card-footer align-items-center d-flex justify-content-center">
+      <div style="text-align: center" class="col">
+        
         <button type="button" class="btn btn-outline-primary btn-lg">Submit to Gallery</button>
-      </div>
-      </div>
+
       </div>
     </div>
 </form>
